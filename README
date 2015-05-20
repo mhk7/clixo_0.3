@@ -3,7 +3,7 @@ Date: 5/20/2015
 CliXO release 0.3
 Please cite: Kramer M, Dutkowski J, Yu M, Bafna V, Ideker T. Inferring gene ontologies from pairwise similarity data. Bioinformatics, 30: i34-i42. 2014. doi: 10.1093/bioinformatics/btu282
 
-This program is already compiled and should run without recompiling, but if it does not immediately work on your system then perform the following to compile.  This program requires g++ version 4.7 or newer to compile.  Simply enter the clixo_release_0.3 folder and type:
+This program is already compiled and should run without recompiling, but if it does not immediately work on your system then perform the following to compile.  This program requires g++ version 4.7 or newer to compile.  Simply enter the main folder and type:
 
 make clixo
 
