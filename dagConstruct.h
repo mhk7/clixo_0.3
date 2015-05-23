@@ -10,8 +10,10 @@
 #include "dag.h"
 #include "graph_undirected.h"
 #include "graph_undirected_bitset.h"
+#include "trie.h"
 #include "util.h"
 #include "nodeDistanceObject.h"
+#include "findMaximalCliques.h"
 #include "corrector.h"
 
 void printCluster(const boost::dynamic_bitset<unsigned long> & cluster, vector<string> & nodeIDsToNames) {
@@ -22,9 +24,10 @@ void printCluster(const boost::dynamic_bitset<unsigned long> & cluster, vector<s
   }
 }
 
-bool compPairSecondAscending(const pair< unsigned, unsigned > & i,const pair< unsigned, unsigned > & j) { 
+/*bool compPairSecondAscending(const pair< unsigned, unsigned > & i,const pair< unsigned, unsigned > & j) { 
   return (i.second < j.second); 
-}
+  }*/
+
 
 /*bool compNewClustersAndCounts(const pair< unsigned, pair<unsigned, unsigned > > & i,const pair< unsigned, pair<unsigned, unsigned > > & j) {
   if (i.second.first == j.second.first) {
@@ -2391,7 +2394,7 @@ namespace dagConstruct {
     //for (sortedDistanceStruct::iterator distanceIt = nodeDistances.sortedDistancesBegin();
     //distanceIt != nodeDistances.sortedDistancesEnd(); ++distanceIt) {
     unsigned totalEdges = numNodes*(numNodes-1) / 2;
-    while ((clusterGraph.numEdges() != totalEdges) && (distanceIt != nodeDistances.sortedDistancesEnd())) {
+    while ((clusterGraph.numEdges() != totalEdges) && (distanceIt != nodeDistances.sortedDistancesEnd()) && (distanceIt->second >= Corrector::max()*threshold)) {
 
       vector<pair<pair<unsigned, unsigned>, double> > edgesToAdd;
       edgesToAdd.reserve(2000000);
@@ -2399,7 +2402,7 @@ namespace dagConstruct {
       if ((dt - Corrector::max()*threshold) > addUntil) {
 	addUntil = dt - Corrector::max()*threshold;
       }
-      //cout << "# " << distanceIt->second << "\t" << addUntil << endl;
+      cout << "# " << distanceIt->second << "\t" << addUntil << "\t" << Corrector::max()*threshold << endl;
       while ((distanceIt != nodeDistances.sortedDistancesEnd()) && (distanceIt->second >= addUntil) && (distanceIt->second >= Corrector::max()*threshold)) {
 	unsigned firstNode = distanceIt->first.first;
 	unsigned secondNode = distanceIt->first.second;
