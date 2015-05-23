@@ -10,10 +10,8 @@
 #include "dag.h"
 #include "graph_undirected.h"
 #include "graph_undirected_bitset.h"
-#include "trie.h"
 #include "util.h"
 #include "nodeDistanceObject.h"
-#include "findMaximalCliques.h"
 #include "corrector.h"
 
 void printCluster(const boost::dynamic_bitset<unsigned long> & cluster, vector<string> & nodeIDsToNames) {
@@ -24,9 +22,9 @@ void printCluster(const boost::dynamic_bitset<unsigned long> & cluster, vector<s
   }
 }
 
-/*bool compPairSecondAscending(const pair< unsigned, unsigned > & i,const pair< unsigned, unsigned > & j) { 
+bool compPairSecondAscending(const pair< unsigned, unsigned > & i,const pair< unsigned, unsigned > & j) { 
   return (i.second < j.second); 
-  }*/
+}
 
 
 /*bool compNewClustersAndCounts(const pair< unsigned, pair<unsigned, unsigned > > & i,const pair< unsigned, pair<unsigned, unsigned > > & j) {
