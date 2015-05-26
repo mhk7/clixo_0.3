@@ -2400,7 +2400,7 @@ namespace dagConstruct {
       if ((dt - Corrector::max()*threshold) > addUntil) {
 	addUntil = dt - Corrector::max()*threshold;
       }
-      cout << "# " << distanceIt->second << "\t" << addUntil << "\t" << Corrector::max()*threshold << endl;
+      //cout << "# " << distanceIt->second << "\t" << addUntil << "\t" << Corrector::max()*threshold << endl;
       while ((distanceIt != nodeDistances.sortedDistancesEnd()) && (distanceIt->second >= addUntil) && (distanceIt->second >= Corrector::max()*threshold)) {
 	unsigned firstNode = distanceIt->first.first;
 	unsigned secondNode = distanceIt->first.second;
